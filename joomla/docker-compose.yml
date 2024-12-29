@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  joomla:
+    image: joomla:latest #https://hub.docker.com/_/joomla
+    ports:
+      - "8080:80"
+    environment:
+      - JOOMLA_DB_HOST=db
+      - JOOMLA_DB_USER=joomla
+      - JOOMLA_DB_PASSWORD=joomla_password
+      - JOOMLA_DB_NAME=joomla
+    volumes:
+      - joomla_data:/var/www/html
+    depends_on:
+      - db
+    restart: always
+    # networks:
+    #   - joomla_network
+
+  db:
+    image: mysql:8.0
+    environment:
+      - MYSQL_ROOT_PASSWORD=somewordpress
+      - MYSQL_DATABASE=joomla
+      - MYSQL_USER=joomla
+      - MYSQL_PASSWORD=joomla_password
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    # networks:
+    #   - joomla_network
+
+volumes:
+  joomla_data:
+  db_data: 
+
+# networks:
+#   joomla_network:
