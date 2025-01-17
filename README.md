@@ -1,4 +1,4 @@
-# Docker for CRM Systems
+# Docker for CMS Systems
 
 A comprehensive Docker-based development environment for popular Content Management Systems (CMS). This repository provides ready-to-use Docker configurations for WordPress, Drupal, and Joomla.
 
